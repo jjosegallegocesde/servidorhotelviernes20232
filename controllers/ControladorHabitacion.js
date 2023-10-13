@@ -31,7 +31,7 @@ export class ControladorHabitacion{
             let id=request.params.id
             let datos=request.body
             response.status(200).json({
-                "mensaje":"exito buscando los datos",
+                "mensaje":"exito modificando los datos",
                 "datos":"aca los datos"
             })
         }catch(error){
@@ -44,7 +44,7 @@ export class ControladorHabitacion{
         try{
             let datos=request.body
             response.status(200).json({
-                "mensaje":"exito buscando los datos",
+                "mensaje":"exito registrando los datos",
                 "datos":"aca los datos"
             })
         }catch(error){
@@ -57,7 +57,7 @@ export class ControladorHabitacion{
         try{
             let id=request.params.id
             response.status(200).json({
-                "mensaje":"exito buscando los datos",
+                "mensaje":"exito eliminando los datos",
                 "datos":"aca los datos"
             })
         }catch(error){
