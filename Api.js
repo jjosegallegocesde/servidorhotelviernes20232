@@ -17,6 +17,7 @@ export class Api {
 
   //2. Atiende las peticiones y responde
   procesarPeticiones() {
+    this.app.use(express.json())
     this.app.use("/",rutasAPI)
     
   }
