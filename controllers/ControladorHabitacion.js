@@ -1,11 +1,13 @@
+import {ServicioHabitacion} from '../services/ServicioHabitacion.js'
 export class ControladorHabitacion{
     constructor(){}
 
-    buscarTodas(request,response){
+    async buscarTodas(request,response){
         try{
+            let servicioHabitacion=new ServicioHabitacion()
             response.status(200).json({
                 "mensaje":"exito buscando los datos",
-                "datos":"aca los datos"
+                "datos":await servicioHabitacion.buscarTodas()
             })
         }catch(error){
             response.status(400).json({
@@ -13,12 +15,13 @@ export class ControladorHabitacion{
             })
         }
     }
-    buscarPorId(request,response){
+    async buscarPorId(request,response){
         try{
+            let servicioHabitacion=new ServicioHabitacion()
             let id=request.params.id
             response.status(200).json({
                 "mensaje":"exito buscando los datos",
-                "datos":"aca los datos"
+                "datos":await servicioHabitacion.buscarPorId(id)
             })
         }catch(error){
             response.status(400).json({
@@ -26,10 +29,12 @@ export class ControladorHabitacion{
             })
         }
     }
-    modificar(request,response){
+    async modificar(request,response){
         try{
+            let servicioHabitacion=new ServicioHabitacion()
             let id=request.params.id
             let datos=request.body
+            await servicioHabitacion.modificar(id,datos) //ESTO
             response.status(200).json({
                 "mensaje":"exito modificando los datos",
                 "datos":"aca los datos"
@@ -40,12 +45,17 @@ export class ControladorHabitacion{
             })
         }
     }
-    registrar(request,response){
+    async registrar(request,response){
         try{
+            let servicioHabitacion=new ServicioHabitacion()
             let datos=request.body
+            //tomar 2 fechas del objeto datos
+            //la diferencia en dias de esa dos fechas
+            //await servicioHabitacion.registrar(datos)
             response.status(200).json({
                 "mensaje":"exito registrando los datos",
-                "datos":"aca los datos"
+                "datos":datos.precioNoche,
+                "diferencia":"diferencia en dia calculada"
             })
         }catch(error){
             response.status(400).json({
@@ -53,8 +63,9 @@ export class ControladorHabitacion{
             })
         }
     }
-    eliminar(request,response){
+    async eliminar(request,response){
         try{
+            let servicioHabitacion=new ServicioHabitacion()
             let id=request.params.id
             response.status(200).json({
                 "mensaje":"exito eliminando los datos",
